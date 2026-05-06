@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/PlacementScene.unity
-    guid: 2bf353344f6f84024bb2749ef545486f
-  - enabled: 1
-    path: Assets/Scenes/ExperienceScene.unity
-    guid: 782ed65c8ef244238ab0255f80b3d5dc
+    path: Assets/Scenes/VRDatasetTable.unity
+    guid: c0b771ab7acba45bca73b38a16dd99a6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
