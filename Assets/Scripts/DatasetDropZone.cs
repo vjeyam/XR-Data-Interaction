@@ -9,13 +9,56 @@ public class DatasetDropZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("DropZone touched by: " + other.name);
+
         if (hasSpawned) return;
 
-        if (other.CompareTag("Dataset"))
+        if (IsDatasetObject(other.transform))
         {
-            Instantiate(plotPrefab, plotSpawnPoint.position, plotSpawnPoint.rotation);
+            Debug.Log("Dataset detected. Spawning plot.");
+            SpawnPlot();
             hasSpawned = true;
-            Debug.Log("Dataset placed. Plot spawned.");
         }
+    }
+
+    private bool IsDatasetObject(Transform hitTransform)
+    {
+        Transform current = hitTransform;
+
+        while (current != null)
+        {
+            if (current.CompareTag("Dataset"))
+                return true;
+
+            current = current.parent;
+        }
+
+        return false;
+    }
+
+    private void SpawnPlot()
+    {
+        if (plotPrefab == null)
+        {
+            Debug.LogError("Plot prefab missing on DatasetDropZone.");
+            return;
+        }
+
+        if (plotSpawnPoint == null)
+        {
+            Debug.LogError("Plot spawn point missing on DatasetDropZone.");
+            return;
+        }
+
+        GameObject spawnedPlot = Instantiate(
+            plotPrefab,
+            plotSpawnPoint.position,
+            plotSpawnPoint.rotation
+        );
+
+        spawnedPlot.name = "Spawned 3D Plot";
+        spawnedPlot.transform.localScale = Vector3.one * 1.5f;
+
+        Debug.Log("Plot spawned at: " + plotSpawnPoint.position);
     }
 }
