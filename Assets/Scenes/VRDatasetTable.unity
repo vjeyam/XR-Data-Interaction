@@ -809,6 +809,56 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749767405}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &761838383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 761838385}
+  - component: {fileID: 761838384}
+  m_Layer: 0
+  m_Name: Gesture Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &761838384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761838383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d48b3abc46d4b029eb3173d08f8e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHand: {fileID: 581589522}
+  rightHand: {fileID: 1926429623}
+  headCamera: {fileID: 1101298284}
+  gestureCooldown: 1
+  twoHandNearDistance: 0.45
+  expandContractThreshold: 0.08
+--- !u!4 &761838385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761838383}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &809051706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,7 +1269,7 @@ GameObject:
   - component: {fileID: 1156370637}
   - component: {fileID: 1156370636}
   m_Layer: 0
-  m_Name: '[BuildingBlock] Real Hands'
+  m_Name: Real Hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1706,7 +1756,7 @@ GameObject:
   - component: {fileID: 1830224272}
   - component: {fileID: 1830224271}
   m_Layer: 0
-  m_Name: '[BuildingBlock] Camera Rig'
+  m_Name: Camera Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1890,7 +1940,7 @@ GameObject:
   - component: {fileID: 1873270092}
   - component: {fileID: 1873270091}
   m_Layer: 0
-  m_Name: '[BuildingBlock] Passthrough'
+  m_Name: Passthrough
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2218,3 +2268,4 @@ SceneRoots:
   - {fileID: 1830224275}
   - {fileID: 1873270093}
   - {fileID: 1156370639}
+  - {fileID: 761838385}

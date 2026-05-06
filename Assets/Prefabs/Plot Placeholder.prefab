@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3376057198583692948}
   - component: {fileID: 1473075063556226339}
   - component: {fileID: 3705882863332405693}
-  - component: {fileID: 5188450050994496387}
+  - component: {fileID: 5687105633365196189}
   m_Layer: 0
   m_Name: Plot Placeholder
   m_TagString: Untagged
@@ -122,7 +122,7 @@ MonoBehaviour:
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
   _forceKinematicDisabled: 0
---- !u!114 &5188450050994496387
+--- !u!114 &5687105633365196189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,8 +131,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7230571114225447839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 919e143e13a174fbeaff45286ed86a91, type: 3}
+  m_Script: {fileID: 11500000, guid: facd56ba05ba44ef99e0b70c972c143a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
-  rotateOnlyWhenNotGrabbed: 1
+  autoRotate: 1
+  rotationSpeed: 12
+  lockHeight: 1
+  minScale: 0.4
+  maxScale: 1.6
+  scaleStep: 0.15
+  explodeMultiplier: 1.5
