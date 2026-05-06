@@ -4,7 +4,7 @@ public class SimplePointPlot : MonoBehaviour
 {
     public int pointCount = 60;
     public float plotSize = 0.8f;
-    public float pointScale = 0.035f;
+    public float pointScale = 0.05f;
 
     private void Start()
     {
@@ -30,6 +30,12 @@ public class SimplePointPlot : MonoBehaviour
             point.transform.SetParent(transform);
             point.transform.localPosition = position;
             point.transform.localScale = Vector3.one * pointScale;
+
+            Collider pointCollider = point.GetComponent<Collider>();
+            if (pointCollider != null)
+            {
+                Destroy(pointCollider);
+            }
         }
     }
 
@@ -49,5 +55,11 @@ public class SimplePointPlot : MonoBehaviour
             axis.transform.localScale = new Vector3(0.01f, 0.01f, 0.8f);
 
         axis.GetComponent<Renderer>().material.color = color;
+
+        Collider axisCollider = axis.GetComponent<Collider>();
+        if (axisCollider != null)
+        {
+            Destroy(axisCollider);
+        }
     }
 }

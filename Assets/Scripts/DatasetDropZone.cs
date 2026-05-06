@@ -57,7 +57,7 @@ public class DatasetDropZone : MonoBehaviour
         );
 
         spawnedPlot.name = "Spawned 3D Plot";
-        spawnedPlot.transform.localScale = Vector3.one * 1.5f;
+        spawnedPlot.transform.localScale = Vector3.one * 0.8f;
 
         Debug.Log("Plot spawned at: " + plotSpawnPoint.position);
     }
