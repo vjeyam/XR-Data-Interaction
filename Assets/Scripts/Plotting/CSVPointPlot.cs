@@ -213,4 +213,45 @@ public class CSVPointPlot : MonoBehaviour
             Destroy(axisCollider);
         }
     }
+
+    public void SetXColumn(string newXColumn)
+    {
+        xColumn = newXColumn;
+        RegeneratePlot();
+    }
+
+    public void SetYColumn(string newYColumn)
+    {
+        yColumn = newYColumn;
+        RegeneratePlot();
+    }
+
+    private void RegeneratePlot()
+    {
+        ClearPlot();
+        GeneratePlot();
+
+        HologramPlotLabel label = GetComponent<HologramPlotLabel>();
+
+        if (label != null)
+        {
+            label.SetLabel(
+                "Breast Cancer Wisconsin",
+                xColumn + " / " + yColumn + " / " + zColumn
+            );
+        }
+    }
+
+    private void ClearPlot()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            Transform child = transform.GetChild(i);
+
+            if (child.name.Contains("Data Point") || child.name.Contains("Axis"))
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
 }

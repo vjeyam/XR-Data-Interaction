@@ -70,8 +70,10 @@ public class DatasetDropZone : MonoBehaviour
             Debug.Log("Columns: " + token.xColumn + ", " + token.yColumn + ", " + token.zColumn);
             Debug.Log("Color Column: " + token.colorColumn);
 
+            // Generate plot from selected dataset cube metadata
             csvPlot.GeneratePlotFromToken(token);
 
+            // Update floating plot title label
             HologramPlotLabel label = spawnedPlot.GetComponent<HologramPlotLabel>();
 
             if (label != null)
@@ -80,6 +82,19 @@ public class DatasetDropZone : MonoBehaviour
                     token.displayName,
                     token.xColumn + " / " + token.yColumn + " / " + token.zColumn
                 );
+            }
+
+            // Make X/Y variable slot panel follow this spawned plot
+            PlotVariableSlotPanel slotPanel = FindObjectOfType<PlotVariableSlotPanel>();
+
+            if (slotPanel != null)
+            {
+                slotPanel.targetPlot = spawnedPlot.transform;
+                slotPanel.SetLabels(csvPlot.xColumn, csvPlot.yColumn);
+            }
+            else
+            {
+                Debug.LogWarning("PlotVariableSlotPanel not found in scene.");
             }
         }
         else
