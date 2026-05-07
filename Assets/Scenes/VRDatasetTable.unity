@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0296492b8614f998d9ee41e3909d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plotPrefab: {fileID: 7230571114225447839, guid: 612133342d575445b999137fe25e8a48,
+  plotPrefab: {fileID: 7906223923013964151, guid: c98f58f0b39384a848bf671ca3891165,
     type: 3}
   plotSpawnPoint: {fileID: 893546543}
 --- !u!1 &369594994
