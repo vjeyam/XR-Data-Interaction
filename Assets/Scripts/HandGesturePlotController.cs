@@ -43,23 +43,9 @@ public class HandGesturePlotController : MonoBehaviour
 
         float delta = currentDistance - previousHandDistance;
 
-        if (Time.time - lastGestureTime > gestureCooldown)
+        if (Mathf.Abs(delta) > 0.002f)
         {
-            if (Mathf.Abs(delta) > expandContractThreshold)
-            {
-                if (delta > 0f)
-                {
-                    currentPlot.ScaleUp();
-                    Debug.Log("Gesture: hands apart = scale up");
-                }
-                else
-                {
-                    currentPlot.ScaleDown();
-                    Debug.Log("Gesture: hands together = scale down");
-                }
-
-                lastGestureTime = Time.time;
-            }
+            currentPlot.ScaleByGesture(delta);
         }
 
         previousHandDistance = currentDistance;

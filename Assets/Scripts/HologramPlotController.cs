@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class HologramPlotController : MonoBehaviour
 {
+    [Header("Position Lock")]
+    public bool clampYPosition = true;
+    public float maxYDrift = 0.01f;
+    
     [Header("Rotation")]
     public bool autoRotate = true;
     public float rotationSpeed = 12f;
@@ -20,7 +24,7 @@ public class HologramPlotController : MonoBehaviour
     private float lockedY;
     private bool axesVisible = true;
     private bool exploded = false;
-
+    public float gestureScaleSensitivity = 3.0f;
     private readonly List<Transform> dataPoints = new List<Transform>();
     private readonly List<Vector3> originalPointPositions = new List<Vector3>();
 
@@ -49,10 +53,10 @@ public class HologramPlotController : MonoBehaviour
 
     private void Update()
     {
-        if (lockHeight)
+        if (clampYPosition)
         {
             Vector3 pos = transform.position;
-            pos.y = lockedY;
+            pos.y = Mathf.Clamp(pos.y, lockedY - maxYDrift, lockedY + maxYDrift);
             transform.position = pos;
         }
 
@@ -138,5 +142,15 @@ public class HologramPlotController : MonoBehaviour
 
         transform.localScale = Vector3.one;
         Debug.Log("Plot reset.");
+    }
+
+    public void ScaleByGesture(float handDistanceDelta)
+    {
+        float currentScale = transform.localScale.x;
+        float nextScale = currentScale + handDistanceDelta * gestureScaleSensitivity;
+
+        nextScale = Mathf.Clamp(nextScale, minScale, maxScale);
+
+        transform.localScale = Vector3.one * nextScale;
     }
 }
