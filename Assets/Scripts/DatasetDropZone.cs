@@ -71,6 +71,16 @@ public class DatasetDropZone : MonoBehaviour
             Debug.Log("Color Column: " + token.colorColumn);
 
             csvPlot.GeneratePlotFromToken(token);
+
+            HologramPlotLabel label = spawnedPlot.GetComponent<HologramPlotLabel>();
+
+            if (label != null)
+            {
+                label.SetLabel(
+                    token.displayName,
+                    token.xColumn + " / " + token.yColumn + " / " + token.zColumn
+                );
+            }
         }
         else
         {

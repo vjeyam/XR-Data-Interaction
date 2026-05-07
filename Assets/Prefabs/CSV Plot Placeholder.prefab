@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4219127443153769301}
   - component: {fileID: 2498979713283678426}
   - component: {fileID: 3883139997464695994}
+  - component: {fileID: -192305076219443972}
   m_Layer: 0
   m_Name: CSV Plot Placeholder
   m_TagString: Untagged
@@ -121,8 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clampYPosition: 1
   maxYDrift: 0.01
-  autoRotate: 1
-  rotationSpeed: 12
+  autoRotate: 0
+  rotationSpeed: 5
   lockHeight: 1
   minScale: 0.6
   maxScale: 1.6
@@ -148,3 +149,19 @@ MonoBehaviour:
   colorColumn: diagnosis
   plotSize: 1
   pointScale: 0.005
+--- !u!114 &-192305076219443972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7906223923013964151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57a0daff5864480b95a182572a511a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Breast Cancer Wisconsin
+  subtitle: radius_mean / texture_mean / area_mean
+  worldOffset: {x: 0, y: 1, z: 0}
+  textScale: 0.04
