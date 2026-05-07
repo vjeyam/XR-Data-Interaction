@@ -16,7 +16,7 @@ public class DatasetDropZone : MonoBehaviour
         if (IsDatasetObject(other.transform))
         {
             Debug.Log("Dataset detected. Spawning plot.");
-            SpawnPlot();
+            SpawnPlot(other);
             hasSpawned = true;
         }
     }
@@ -36,7 +36,7 @@ public class DatasetDropZone : MonoBehaviour
         return false;
     }
 
-    private void SpawnPlot()
+    private void SpawnPlot(Collider datasetCollider)
     {
         if (plotPrefab == null)
         {
@@ -50,6 +50,8 @@ public class DatasetDropZone : MonoBehaviour
             return;
         }
 
+        DatasetToken token = datasetCollider.GetComponentInParent<DatasetToken>();
+
         GameObject spawnedPlot = Instantiate(
             plotPrefab,
             plotSpawnPoint.position,
@@ -57,8 +59,36 @@ public class DatasetDropZone : MonoBehaviour
         );
 
         spawnedPlot.name = "Spawned 3D Plot";
-        spawnedPlot.transform.localScale = Vector3.one * 0.8f;
 
-        Debug.Log("Plot spawned at: " + plotSpawnPoint.position);
+        CSVPointPlot csvPlot = spawnedPlot.GetComponent<CSVPointPlot>();
+
+        if (token != null && csvPlot != null)
+        {
+            Debug.Log("TOKEN FOUND");
+            Debug.Log("Dataset: " + token.displayName);
+            Debug.Log("CSV Path: " + token.datasetResourcePath);
+            Debug.Log("Columns: " + token.xColumn + ", " + token.yColumn + ", " + token.zColumn);
+            Debug.Log("Color Column: " + token.colorColumn);
+
+            csvPlot.GeneratePlotFromToken(token);
+        }
+        else
+        {
+            if (token == null)
+            {
+                Debug.LogWarning("DatasetToken missing on dataset object or parent.");
+            }
+
+            if (csvPlot == null)
+            {
+                Debug.LogWarning("CSVPointPlot missing on spawned plot prefab.");
+            }
+        }
+    }
+
+    public void ResetDropZone()
+    {
+        hasSpawned = false;
+        Debug.Log("Drop zone reset.");
     }
 }

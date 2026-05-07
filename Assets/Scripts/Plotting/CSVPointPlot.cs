@@ -18,13 +18,30 @@ public class CSVPointPlot : MonoBehaviour
 
     private List<Dictionary<string, string>> rows;
 
+    private bool hasGenerated = false;
+
     private void Start()
     {
+        if (!hasGenerated)
+        {
+            GeneratePlot();
+        }
+    }
+
+    public void GeneratePlotFromToken(DatasetToken token)
+    {
+        datasetResourcePath = token.datasetResourcePath;
+        xColumn = token.xColumn;
+        yColumn = token.yColumn;
+        zColumn = token.zColumn;
+        colorColumn = token.colorColumn;
+
         GeneratePlot();
     }
 
     private void GeneratePlot()
     {
+        hasGenerated = true;
         rows = CSVLoader.LoadCSV(datasetResourcePath);
 
         if (rows == null || rows.Count == 0)
