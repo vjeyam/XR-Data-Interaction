@@ -1044,7 +1044,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.95, z: 0}
-  m_LocalScale: {x: 1.4, y: 0.35, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.25, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2251,6 +2251,7 @@ GameObject:
   - component: {fileID: 1630692009}
   - component: {fileID: 1630692008}
   - component: {fileID: 1630692015}
+  - component: {fileID: 1630692016}
   m_Layer: 0
   m_Name: radius_mean
   m_TagString: Untagged
@@ -2427,6 +2428,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   columnName: radius_mean
   displayName: Radius Mean
+--- !u!114 &1630692016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630692007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ddc6c8c204054eed8e97bd94b1f7564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snapRadius: 0.35
+  snapSpeed: 8
+  snapRotation: 1
+  isAwayFromHome: 0
 --- !u!1 &1716563215
 GameObject:
   m_ObjectHideFlags: 0

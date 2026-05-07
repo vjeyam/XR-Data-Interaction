@@ -248,7 +248,11 @@ public class CSVPointPlot : MonoBehaviour
         {
             Transform child = transform.GetChild(i);
 
-            if (child.name.Contains("Data Point") || child.name.Contains("Axis"))
+            if (
+                child.name.Contains("Data Point") ||
+                child.name.Contains("Axis") ||
+                child.name.Contains("Plot Content")
+            )
             {
                 Destroy(child.gameObject);
             }

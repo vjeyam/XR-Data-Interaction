@@ -6,8 +6,9 @@ public class PlotVariableSelectionZone : MonoBehaviour
 
     private string selectedX = "";
     private string selectedY = "";
+    private string lastSelectedColumn = "";
 
-    private float cooldown = 0.75f;
+    public float cooldown = 1.25f;
     private float lastSelectTime = -10f;
 
     private void OnTriggerEnter(Collider other)
@@ -15,8 +16,9 @@ public class PlotVariableSelectionZone : MonoBehaviour
         if (Time.time - lastSelectTime < cooldown) return;
 
         DatasetVariableToken variable = other.GetComponentInParent<DatasetVariableToken>();
-
         if (variable == null) return;
+
+        if (variable.columnName == lastSelectedColumn) return;
 
         currentPlot = FindObjectOfType<CSVPointPlot>();
 
@@ -27,6 +29,7 @@ public class PlotVariableSelectionZone : MonoBehaviour
         }
 
         SelectVariable(variable.columnName);
+        lastSelectedColumn = variable.columnName;
         lastSelectTime = Time.time;
     }
 
@@ -48,7 +51,6 @@ public class PlotVariableSelectionZone : MonoBehaviour
             return;
         }
 
-        // After X and Y are both set, replace Y by default.
         selectedY = columnName;
         currentPlot.SetYColumn(columnName);
         Debug.Log("Replaced Y variable: " + columnName);
@@ -58,5 +60,6 @@ public class PlotVariableSelectionZone : MonoBehaviour
     {
         selectedX = "";
         selectedY = "";
+        lastSelectedColumn = "";
     }
 }
